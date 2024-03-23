@@ -1,0 +1,109 @@
+﻿<Window x:Class="ResturaantBillCalculator.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ResturaantBillCalculator"
+        mc:Ignorable="d"
+        Icon="icon.ico"
+        Title="Resturant Bill Calculator" Height="450" Width="800">
+    <Grid Margin="0,0,-10,-6">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="79*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="4*"/>
+            <RowDefinition Height="103*"/>
+            <RowDefinition Height="3*"/>
+        </Grid.RowDefinitions>
+        <Grid.Background>
+            <ImageBrush ImageSource="/background1.jpeg" Stretch="UniformToFill"/>
+        </Grid.Background>
+        <!-- Desserts ComboBox -->
+        <TextBlock Text="Desserts" Margin="10,16,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Column="1" FontSize="20" FontFamily="Arial Black" FontStyle="Italic" Foreground="#FFA9BDC6" Height="23" Width="98" Grid.RowSpan="2"/>
+
+        <ComboBox Margin="12,28,0,0" Name="DessertsComboBox" HorizontalAlignment="Left"
+              VerticalAlignment="Top" Width="250" Height="40" Grid.Column="1" Grid.Row="1">
+            <ComboBoxItem>None</ComboBoxItem>
+            <ComboBoxItem Content="Cake - $5.99"></ComboBoxItem>
+            <ComboBoxItem Content="Ice Cream - $3.99"></ComboBoxItem>
+            <ComboBoxItem Content="Donut - $2.99"></ComboBoxItem>
+            <ComboBoxItem Content="Pudding - $4.49"></ComboBoxItem>
+          
+        </ComboBox>
+
+        <!-- Beverages ComboBox -->
+        <TextBlock Text="Beverages" Margin="14,178,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Column="1" Grid.Row="1" FontSize="20" FontFamily="Arial Black" FontStyle="Italic" Foreground="#FFC08776" Height="23" Width="115"/>
+        <ComboBox Margin="12,206,0,0" Name="BeveragesComboBox" HorizontalAlignment="Left"
+              VerticalAlignment="Top" Width="250" Height="40" Grid.Column="1" Grid.Row="1">
+            <ComboBoxItem>None</ComboBoxItem>
+            <ComboBoxItem Content="Coffee - $2.49"></ComboBoxItem>
+            <ComboBoxItem Content="Tea - $1.99"></ComboBoxItem>
+            <ComboBoxItem Content="Orange Juice - $3.49"></ComboBoxItem>
+            <ComboBoxItem Content="Fruit Punch - $4.99"></ComboBoxItem>
+           
+        </ComboBox>
+
+        <!-- Appetizers ComboBox -->
+        <TextBlock Text="Appetizers" Margin="13,88,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Column="1" Grid.Row="1" FontSize="20" FontFamily="Arial Black" FontStyle="Italic" Foreground="#FFA9BDC6" RenderTransformOrigin="0.556,5.892" Height="23" Width="117"/>
+        <ComboBox Margin="10,116,0,0" Name="AppetizersComboBox" HorizontalAlignment="Left"
+              VerticalAlignment="Top" Width="250" Height="40" Grid.Column="1" Grid.Row="1">
+            <ComboBoxItem>None</ComboBoxItem>
+            <ComboBoxItem Content="Salad - $6.99"></ComboBoxItem>
+            <ComboBoxItem Content="Soup - $5.49"></ComboBoxItem>
+            <ComboBoxItem Content="Garlic Bread - $4.99"></ComboBoxItem>
+            <ComboBoxItem Content="Wontons- $7.99"></ComboBoxItem>
+            <!-- Add more appetizer items here -->
+        </ComboBox>
+
+        <!-- Main Courses ComboBox -->
+        <TextBlock Text="Main Courses" Margin="12,271,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Column="1" Grid.Row="1" FontSize="20" FontFamily="Arial Black" FontStyle="Italic" Foreground="#FFC08776" RenderTransformOrigin="0.556,5.892" Height="23" Width="148"/>
+        <ComboBox Margin="12,311,0,0" Name="MainCoursesComboBox" HorizontalAlignment="Left"
+              VerticalAlignment="Top" Width="250" Height="40" Grid.Column="1" Grid.Row="1">
+            <ComboBoxItem>None</ComboBoxItem>
+            <ComboBoxItem Content="Pizza - $8.99"></ComboBoxItem>
+            <ComboBoxItem Content="Burger - $7.49"></ComboBoxItem>
+            <ComboBoxItem Content="Pasta - $9.99"></ComboBoxItem>
+            <ComboBoxItem Content="Steak and Potatoes - $10.99"></ComboBoxItem>
+       
+        </ComboBox>
+
+
+
+        <!-- Add Button -->
+        <Button Name="AddButton" Content="Add Item" Click="AddButton_Click"
+            Margin="317,331,373,34" RenderTransformOrigin="1,0.5" Background="#FF284662" Foreground="White" Grid.Column="1" Grid.Row="1" />
+
+        <!-- Delete Button -->
+        <Button Name="DeleteButton" Content="Delete Item" Click="DeleteButton_Click"
+            Margin="450,331,240,34" Foreground="White" Background="#FF284662" Grid.Column="1" Grid.Row="1" />
+        <ListBox  x:Name="SelectedItemsListBox" ItemsSource="{Binding selectedItemsList}" Grid.Column="1" Margin="339,10,161,152" Grid.Row="1">
+            <ListBox.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="-0.207"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </ListBox.RenderTransform>
+        </ListBox>
+        <Button x:Name="ClearButton_Copy" Content="Clear Tab" Click="ClearButton_Click"
+            Margin="578,331,112,34" Foreground="White" Background="#FF284662" Grid.Column="1" Grid.Row="1" />
+        <Label x:Name="TotalLabel" Grid.Column="1" Content="Total:" HorizontalAlignment="Left" Margin="344,273,0,0" Grid.Row="1" VerticalAlignment="Top" RenderTransformOrigin="0.512,0.914" Height="43" Width="133" Foreground="White" FontSize="20" FontWeight="Bold" Background="#FF284662">
+            <Label.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="-0.736"/>
+                    <TranslateTransform X="0.558" Y="-0.061"/>
+                </TransformGroup>
+            </Label.RenderTransform>
+        </Label>
+        <Image Grid.Column="1" HorizontalAlignment="Left" MouseLeftButtonDown="LogoButton_Click" Height="265" Margin="680,4,0,0" Grid.Row="1" VerticalAlignment="Top" Width="85" Source="/CentennialCollege_Logo_RGB.jpeg">
+            <Image.OpacityMask>
+                <ImageBrush ImageSource="/CentennialCollege_Logo_RGB.jpeg" TileMode="None"/>
+            </Image.OpacityMask>
+        </Image>
+    </Grid>
+</Window>
